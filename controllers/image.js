@@ -68,41 +68,45 @@ module.exports = {
           saveImage();
         } else {
 
-          var tempPath = req.files[0].path,
-            ext = path.extname(req.files[0].originalname).toLowerCase(),
-            targetPath = path.resolve('./public/upload/' + imgUrl +
-              ext);
+          if (req.files.length > 0) {
 
-          if (ext === '.png' || ext === '.jpg' || ext === '.jpeg' ||
-            ext ===
-            '.gif') {
-            fs.rename(tempPath, targetPath, function(err) {
-              if (err) throw err;
+            var tempPath = req.files[0].path,
+              ext = path.extname(req.files[0].originalname).toLowerCase(),
+              targetPath = path.resolve('./public/upload/' + imgUrl +
+                ext);
+
+            if (ext === '.png' || ext === '.jpg' || ext === '.jpeg' ||
+              ext ===
+              '.gif') {
+              fs.rename(tempPath, targetPath, function(err) {
+                if (err) throw err;
 
 
-              var newImg = new Models.Image({
-                title: req.body.title,
-                filename: imgUrl + ext,
-                description: req.body.description
+                var newImg = new Models.Image({
+                  title: req.body.title,
+                  filename: imgUrl + ext,
+                  description: req.body.description
+                });
+
+                newImg.save(function(err, image) {
+                  res.redirect('/images/' + imgUrl);
+
+                })
+
+
               });
+            } else {
+              fs.unlink(tempPath, function() {
+                if (err) throw err;
 
-              newImg.save(function(err, image) {
-                res.redirect('/images/' + imgUrl);
-
-              })
-
-
-            });
+                res.json(500, {
+                  error: 'Only image files are allowed.'
+                });
+              });
+            }
           } else {
-            fs.unlink(tempPath, function() {
-              if (err) throw err;
-
-              res.json(500, {
-                error: 'Only image files are allowed.'
-              });
-            });
+            res.redirect('/');
           }
-
         }
       });
 
