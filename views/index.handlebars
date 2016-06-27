@@ -4,14 +4,17 @@
          Upload an Image
       </h3>
    </div>
+
    <form method="post" action="/images" enctype="multipart/form-data">
       <div class="panel-body form-horizontal">
-         <div class="form-group col-md-12">
-            <label class="col-sm-2 control-label" for="file">Browse:</label>
-            <div class="col-md-10">
-               <input class="form-control" type="file" name="file" id="file">
-            </div>
-         </div>
+
+        <div class="form-group col-md-12">
+           <div class="col-md-12 text-right">
+             <input id="file-1" name="file" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="1">
+           </div>
+        </div>
+
+
          <div class="form-group col-md-12">
             <label class="col-md-2 control-label" for="title">Title:</label>
             <div class="col-md-10">

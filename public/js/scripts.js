@@ -5,8 +5,6 @@ $(function() {
     $('#post-comment').show();
   })
 
-
-
   $('#btn-like').on('click', function(event) {
     event.preventDefault();
 
@@ -16,4 +14,7 @@ $(function() {
       $('.likes-count').text(data.likes);
     });
   });
+
+
+
 });

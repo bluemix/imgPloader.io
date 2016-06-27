@@ -1,0 +1,17 @@
+{
+  "name": "file-upload",
+  "authors": [
+    "Abdulmomen Kadum عبدالمؤمن كاظم <a.bluemix@gmail.com>"
+  ],
+  "description": "file-upload playground",
+  "main": "index.html",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

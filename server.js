@@ -2,9 +2,15 @@ var express = require('express')
 var config = require('./server/configure')
 var app = express()
 var mongoose = require('mongoose')
+var path = require('path')
 
 app.set('port', process.env.PORT || 3300);
 app.set('views', __dirname + '/views');
+
+app.use("/bower_components", express.static(path.join(__dirname,
+  'bower_components')));
+
+
 app = config(app);
 
 

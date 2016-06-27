@@ -1,0 +1,20 @@
+{
+  "name": "tests_playground",
+  "version": "1.0.0",
+  "description": "testing playground",
+  "main": "testhelper.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "mocha -r tests/testhelper.js -R spec tests/**/*.test.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "proxyquire": "^1.7.9",
+    "sinon": "^1.17.4",
+    "sinon-chai": "^2.8.0"
+  }
+}
